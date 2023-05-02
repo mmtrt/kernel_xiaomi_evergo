@@ -125,3 +125,14 @@ all.config
 
 # fetched Android config fragments
 kernel/configs/android-*.cfg
+
+# build
+out/
+anykernel/
+toolchains/
+transfer
+*.log
+*.zip
+*.old
+*.bak
+
