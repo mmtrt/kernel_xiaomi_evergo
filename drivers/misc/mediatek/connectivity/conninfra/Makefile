@@ -87,24 +87,8 @@ ccflags-y += -I$(src)/debug_utility/metlog
 ccflags-y += -I$(src)/platform/$(CONNSYS_PLATFORM)/include
 ccflags-y += -I$(src)/platform/$(CONNSYS_PLATFORM)/include/CODA
 
-ifneq ($(TARGET_BUILD_VARIANT), user)
-    ccflags-y += -D CONNINFRA_DBG_SUPPORT=1
-else
-    ccflags-y += -D CONNINFRA_DBG_SUPPORT=0
-endif
-
-# Build mode option
-ifeq ($(TARGET_BUILD_VARIANT),eng)
-    ccflags-y += -D CONNINFRA_PLAT_BUILD_MODE=1
-else ifeq ($(TARGET_BUILD_VARIANT),userdebug)
-    ccflags-y += -D CONNINFRA_PLAT_BUILD_MODE=2
-else ifeq ($(TARGET_BUILD_VARIANT),user)
-    ccflags-y += -D CONNINFRA_PLAT_BUILD_MODE=3
-else
-    $(info invalid $$TARGET_BUILD_VARIANT[${TARGET_BUILD_VARIANT}])
-    ccflags-y += -D CONNINFRA_PLAT_BUILD_MODE=0
-endif
-
+ccflags-y += -D CONNINFRA_DBG_SUPPORT=0
+ccflags-y += -D CONNINFRA_PLAT_BUILD_MODE=3
 
 #ifeq ($(findstring evb, $(MTK_PROJECT)), evb)
 #ccflags-y += -D CFG_WMT_EVB
