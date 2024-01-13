@@ -866,7 +866,7 @@ void __exit main_driver_exit(void)
 	main_exit();
 }
 
-#if (USE_DEVICE_NODE == 0)
+#ifndef MTK_WCN_REMOVE_KERNEL_MODULE
 module_init(main_driver_init);
 module_exit(main_driver_exit);
 #endif
