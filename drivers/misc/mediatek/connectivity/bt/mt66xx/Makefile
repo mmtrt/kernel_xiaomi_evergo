@@ -9,9 +9,6 @@ ifneq ($(KERNEL_OUT),)
     ccflags-y += -imacros $(KERNEL_OUT)/include/generated/autoconf.h
 endif
 
-ifndef TOP
-    TOP := $(srctree)/..
-endif
 
 ifneq ($(CFG_BT_PM_QOS_CONTROL),)
     $(warning set PM_QOS_CONTROL=1)
@@ -39,7 +36,7 @@ endif
 ###############################################################################
 # To include BT driver dependent header file
 
-WMT_SRC_FOLDER := $(TOP)/vendor/mediatek/kernel_modules/connectivity/common
+WMT_SRC_FOLDER := $(srctree)/drivers/misc/mediatek/connectivity/common
 ccflags-y += -I$(WMT_SRC_FOLDER)/common_main/include
 ccflags-y += -I$(WMT_SRC_FOLDER)/common_main/linux/include
 ifneq ($(CONFIG_MTK_CONNSYS_DEDICATED_LOG_PATH),)
@@ -49,7 +46,7 @@ endif
 ###############################################################################
 
 MODULE_NAME := bt_drv
-obj-m += $(MODULE_NAME).o
+obj-y += $(MODULE_NAME).o
 
 ccflags-y += -D CREATE_NODE_DYNAMIC=1
 
