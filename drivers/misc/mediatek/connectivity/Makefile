@@ -44,8 +44,7 @@ endif
 ifeq ($(CONFIG_WLAN_DRV_BUILD_IN),y)
 # for gen4m options
 export CONFIG_MTK_COMBO_WIFI_HIF=axi
-export MTK_COMBO_CHIP=CONNAC2X2_SOC5_0
-export BT_PLATFORM=6833
+export MTK_COMBO_CHIP=CONNAC2X2
 export WLAN_CHIP_ID=6833
 export MTK_ANDROID_WMT=y
 export MTK_ANDROID_EMI=y
@@ -59,7 +58,7 @@ subdir-ccflags-y += -D MTK_WCN_REMOVE_KERNEL_MODULE
 subdir-ccflags-y += -D MTK_WCN_BUILT_IN_DRIVER
 endif
 
-obj-$(CONFIG_MTK_COMBO) += conninfra/
+obj-$(CONFIG_MTK_COMBO) += common/
 obj-$(CONFIG_MTK_COMBO_WIFI) += wlan/adaptor/
 obj-$(CONFIG_MTK_COMBO_CHIP_CONSYS_6833) += wlan/core/gen4m/
 obj-$(CONFIG_MTK_BTIF) += bt/mt66xx/connac2/
