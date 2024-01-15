@@ -6,6 +6,7 @@ export LC_ALL=C
 export USE_CCACHE=1
 export CCACHE_DIR="$HOME/.ccache"
 export ARCH="arm64"
+export SUBARCH="arm64"
 export KBUILD_BUILD_HOST="kubuntu"
 export KBUILD_BUILD_USER="mmtrt"
 DEFCONFIG="evergreen_defconfig"
@@ -45,10 +46,10 @@ make O=out ARCH=arm64 "$DEFCONFIG"
 
 echo -e "\nStarting Compilation...\n"
 
-PATH="$CL_DIR/bin:${PATH}:$GC_DIR/32/bin:${PATH}:$GC_DIR/64/bin:${PATH}" \
+PATH="$CL_DIR/bin:$GC_DIR/32/bin:$GC_DIR/64/bin:${PATH}" \
 make -j$(nproc --all) O=out \
                         ARCH=$ARCH \
-                        CC="ccache clang" \
+                        CC="clang" \
                         CLANG_TRIPLE=aarch64-linux-gnu- \
                         CROSS_COMPILE="$GC_DIR/64/bin/aarch64-linux-android-" \
                         CROSS_COMPILE_ARM32="$GC_DIR/32/bin/arm-linux-androideabi-" \
